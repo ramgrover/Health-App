@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 style="color: #333; text-align: center;">Welcome to My Health App!</h1>
+
+    {% if user_profile %}
+        <div style="background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+            <h3>Your Profile:</h3>
+            <p><strong>Age:</strong> {{ user_profile.age }}</p>
+            <p><strong>Gender:</strong> {{ user_profile.gender }}</p>
+            <p><strong>Fitness Goals:</strong> {{ user_profile.fitness_goals }}</p>
+            <p><strong>Medical History:</strong> {{ user_profile.medical_history }}</p>
+            <a href="{% url 'edit_profile' %}" style="text-decoration: none; color: #007bff;">Edit Profile</a>
+        </div>
+    {% else %}
+        <p style="margin-top: 20px; text-align: center;">Please <a href="{% url 'edit_profile' %}" style="text-decoration: none; color: #007bff;">complete your profile</a>.</p>
+    {% endif %}
+{% endblock %}

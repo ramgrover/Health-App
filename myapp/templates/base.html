@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Health App{% endblock %}</title>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Light gray background */
+}
+
+nav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+nav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+nav a:hover {
+    background-color: #555; /* Darker background on hover */
+}
+
+nav p {
+    float: right;
+    color: white;
+    padding: 14px 16px;
+    margin: 0;
+}
+
+div {
+    margin: 20px;
+    background-color: #fff; /* White background for content area */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+/* Additional styles for specific elements can be added as needed */
+
+
+        /* Add more styles for your content if needed */
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'calculate_days' %}">Calculate Days</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'edit_profile' %}">Edit Profile</a>
+            <a href="{% url 'logout' %}">Logout</a>
+            <p>Welcome, {{user.username}}!</p>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
+    </nav>
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

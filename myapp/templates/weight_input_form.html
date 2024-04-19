@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Weight Input Form</title>
+    </head>
+    <body>
+        <h2>Enter Weight Details</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Calculate</button>
+        </form>
+
+        {% if bmr and maintenance_calories %}
+            <h3>Calculated Results:</h3>
+            <p>Basal Metabolic Rate (BMR): {{ bmr }}</p>
+            <p>Maintenance calories per day: {{ maintenance_calories }}</p>
+            <p>Calories consumed per day for:</p>
+            <p>Mild weight loss (0.25 kg/week): {{ mild_weight_loss }}</p>
+            <p>Moderate weight loss (0.5 kg/week): {{ moderate_weight_loss }}</p>
+            <p>Extreme weight loss (1 kg/week): {{ extreme_weight_loss }}</p>
+            <p>Target Weight: {{ target_weight }}</p>
+            <p>Weight Loss Strategy: {{ strategy }}</p>
+            <p>Estimated number of days to achieve the target weight goal: {{ days_to_target }} days</p>
+            <p>Target achieve date: {{ target_achieve_date }}</p>
+        {% endif %}
+    </body>
+</html>
+{% endblock %}

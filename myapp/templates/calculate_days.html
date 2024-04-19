@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Days</title>
+</head>
+<body>
+    <form id="calculateForm" method="post" action="{% url 'calculate_days' %}" style="max-width: 400px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+        {% csrf_token %}
+        <!-- Your existing fields -->
+        <label for="age" style="font-size: 16px; color: #333; margin-bottom: 8px;">Enter your age in years:</label>
+        <input type="text" name="age" required style="width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 4px;">
+
+        <label for="gender" style="font-size: 16px; color: #333; margin-bottom: 8px;">Select your gender:</label>
+        <select name="gender" required style="width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 4px;">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
+        <label for="activity_level" style="font-size: 16px; color: #333; margin-bottom: 8px;">Choose your activity level:</label>
+        <select name="activity_level" required style="width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 4px;">
+            <option value="1">Sedentary</option>
+            <option value="2">Lightly active</option>
+            <option value="3">Moderately active</option>
+            <option value="4">Very active</option>
+            <option value="5">Extra active</option>
+        </select>
+
+        <!-- New fields for target weight and weight loss strategy -->
+        <label for="target_weight" style="font-size: 16px; color: #333; margin-bottom: 8px;">Target Weight:</label>
+        <input type="number" name="target_weight" required style="width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 4px;">
+    
+        <label for="weight_loss_strategy" style="font-size: 16px; color: #333; margin-bottom: 8px;">Weight Loss Strategy:</label>
+        <select name="weight_loss_strategy" required style="width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 4px;">
+            <option value="1">Mild</option>
+            <option value="2">Moderate</option>
+            <option value="3">Extreme</option>
+        </select>
+    
+        <button type="submit" style="background-color: #007bff; color: #fff; padding: 12px; border: none; border-radius: 4px; cursor: pointer;">Calculate</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            var form = document.getElementById("calculateForm");
+
+            // Submit the form
+            form.submit();
+        }
+    </script>
+</body>
+</html>
