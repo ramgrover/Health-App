@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-#import dj_database_url
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -84,6 +84,10 @@ DATABASES = {
         'HOST': 'dpg-cohbgskf7o1s73fcbi8g-a',
         'PORT': '5432',
     }
+}
+
+DATABASES={
+    'default': dj_database_url.parse('postgres://health_app_yqoy_user:jfe2hNpCzReodcAxHmFKGmR8Hva454D2@dpg-cohbgskf7o1s73fcbi8g-a.oregon-postgres.render.com/health_app_yqoy')
 }
 #DATABASES['default']= dj_database_url.parse("postgres://health_database_user:f3WP5ZsaC9r63RXAoS0LfE0MQl3meBuG@dpg-coh9s0mv3ddc73fkqnn0-a/health_database")
 # postgres://health_database_user:f3WP5ZsaC9r63RXAoS0LfE0MQl3meBuG@dpg-coh9s0mv3ddc73fkqnn0-a/health_database
